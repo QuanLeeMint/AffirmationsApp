@@ -57,7 +57,6 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             AffirmationsTheme {
-                // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
@@ -90,7 +89,7 @@ fun AffirmationList(affirmationList: List<Affirmation>, modifier: Modifier = Mod
 
 @Composable
 fun AffirmationCard(affirmation: Affirmation, modifier: Modifier = Modifier) {
-    var isLiked by remember { mutableStateOf(false) } // Trạng thái like
+    var isLiked by remember { mutableStateOf(false) }
 
     Card(modifier = modifier) {
         Column {
@@ -106,16 +105,16 @@ fun AffirmationCard(affirmation: Affirmation, modifier: Modifier = Modifier) {
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(16.dp),
-                verticalAlignment = Alignment.CenterVertically // Căn giữa theo chiều dọc
+                verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
                     text = LocalContext.current.getString(affirmation.stringResourceId),
-                    modifier = Modifier.weight(1f), // Text sẽ chiếm phần còn lại của Row
+                    modifier = Modifier.weight(1f),
                     style = MaterialTheme.typography.headlineSmall
                 )
                 IconButton(onClick = { isLiked = !isLiked }) {
                     Icon(
-                        imageVector = if (isLiked) Icons.Filled.Favorite else Icons.Outlined.FavoriteBorder, // Đổi icon
+                        imageVector = if (isLiked) Icons.Filled.Favorite else Icons.Outlined.FavoriteBorder,
                         contentDescription = "Like",
                         tint = if (isLiked) Color.Red else Color.Gray
                     )
