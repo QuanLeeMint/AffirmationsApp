@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Affirmations</string>
+    <string name="affirmation1">Bạch Dinh - Vũng Tàu</string>
+    <string name="affirmation2">Người đẹp</string>
+    <string name="affirmation3">Cảnh đẹp</string>
+    <string name="affirmation4">Hai người đẹp</string>
+    <string name="affirmation5">Tui đẹp</string>
+    <string name="affirmation7">Tụi tui đẹp</string>
+    <string name="affirmation8">Vẫn là tụi tui</string>
+    <string name="affirmation9">Lại là tui </string>
+    <string name="affirmation10">Tui ở Bạch Dinh - Vũng Tàu</string>
+    <string name="affirmation6">Hoàng hôn đồ đóa</string>
+</resources>
