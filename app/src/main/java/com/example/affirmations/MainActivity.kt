@@ -41,6 +41,15 @@ import androidx.compose.ui.unit.dp
 import com.example.affirmations.data.Datasource
 import com.example.affirmations.model.Affirmation
 import com.example.affirmations.ui.theme.AffirmationsTheme
+import androidx.compose.foundation.layout.*
+import androidx.compose.material3.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.outlined.FavoriteBorder
+import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.graphics.Color
+
 
 class MainActivity : ComponentActivity() {
 
@@ -81,6 +90,8 @@ fun AffirmationList(affirmationList: List<Affirmation>, modifier: Modifier = Mod
 
 @Composable
 fun AffirmationCard(affirmation: Affirmation, modifier: Modifier = Modifier) {
+    var isLiked by remember { mutableStateOf(false) } // Trạng thái like
+
     Card(modifier = modifier) {
         Column {
             Image(
@@ -91,11 +102,25 @@ fun AffirmationCard(affirmation: Affirmation, modifier: Modifier = Modifier) {
                     .height(194.dp),
                 contentScale = ContentScale.Crop
             )
-            Text(
-                text = LocalContext.current.getString(affirmation.stringResourceId),
-                modifier = Modifier.padding(16.dp),
-                style = MaterialTheme.typography.headlineSmall
-            )
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp),
+                verticalAlignment = Alignment.CenterVertically // Căn giữa theo chiều dọc
+            ) {
+                Text(
+                    text = LocalContext.current.getString(affirmation.stringResourceId),
+                    modifier = Modifier.weight(1f), // Text sẽ chiếm phần còn lại của Row
+                    style = MaterialTheme.typography.headlineSmall
+                )
+                IconButton(onClick = { isLiked = !isLiked }) {
+                    Icon(
+                        imageVector = if (isLiked) Icons.Filled.Favorite else Icons.Outlined.FavoriteBorder, // Đổi icon
+                        contentDescription = "Like",
+                        tint = if (isLiked) Color.Red else Color.Gray
+                    )
+                }
+            }
         }
     }
 }
